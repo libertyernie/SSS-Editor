@@ -3,6 +3,8 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2012
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SSSEditor", "SSSEditor\SSSEditor.csproj", "{C4766086-7E0F-439E-9D24-E07993D3438B}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BrawlManagerLib", "..\BrawlManagerLib\BrawlManagerLib.csproj", "{B5D693D8-3952-44F9-8952-8C1AF74F0634}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -13,6 +15,10 @@ Global
 		{C4766086-7E0F-439E-9D24-E07993D3438B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C4766086-7E0F-439E-9D24-E07993D3438B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C4766086-7E0F-439E-9D24-E07993D3438B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B5D693D8-3952-44F9-8952-8C1AF74F0634}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B5D693D8-3952-44F9-8952-8C1AF74F0634}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B5D693D8-3952-44F9-8952-8C1AF74F0634}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B5D693D8-3952-44F9-8952-8C1AF74F0634}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
