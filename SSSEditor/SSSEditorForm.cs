@@ -12,7 +12,7 @@ namespace SSSEditor {
 	public partial class SSSEditorForm : Form {
 		// Source data
 		private CustomSSS sss;
-		private Dictionary<byte, Tuple<string, ushort>> songCodes;
+		private Dictionary<byte, Song> songCodes;
 		private BRESNode md80;
 
 		#region Collect data from controls
@@ -99,8 +99,9 @@ namespace SSSEditor {
 					Dock = DockStyle.Fill,
 				};
 				if (songCodes.ContainsKey(pair.stage)) {
-					spc.Song = songCodes[pair.stage].Item1;
-					spc.SongToolTip = "Song ID: " + songCodes[pair.stage].Item2.ToString("X4");
+					Song s = songCodes[pair.stage];
+					spc.Song = s.Filename;
+					spc.SongToolTip = s.ID.ToString("X4") + " - " + s.DefaultName;
 				}
 				spc.FindUsageClick += spc_FindUsageClick;
 				spc.SwapWithSelectedClick += spc_SwapWithSelectedClick;
