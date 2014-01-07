@@ -60,7 +60,6 @@
     <Compile Include="FixedStagePairControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="SDSLScanner.cs" />
     <Compile Include="SSSEditorForm.cs">
       <SubType>Form</SubType>
     </Compile>
