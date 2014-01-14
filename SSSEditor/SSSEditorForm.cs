@@ -11,8 +11,7 @@ using System.Windows.Forms;
 namespace SSSEditor {
 	public partial class SSSEditorForm : Form {
 		// Source data
-		private CustomSSS sss;
-		private Dictionary<byte, Song> songCodes;
+		private CustomSSSwithSDSL sss;
 		private BRESNode md80;
 
 		#region Collect data from controls
@@ -60,13 +59,11 @@ namespace SSSEditor {
 
 			tabControl1.SelectedIndexChanged += tabControl1_SelectedIndexChanged;
 
-			sss = new CustomSSS(gct);
+			sss = new CustomSSSwithSDSL(gct);
 			ReloadIfValidPac(pac);
 		}
 
 		private void ReloadData() {
-			songCodes = SDSLScanner.SongsByStage(sss);
-
 			tblStageDefinitions.Controls.Clear();
 			tblSSS1.Controls.Clear();
 			tblSSS2.Controls.Clear();
@@ -98,8 +95,8 @@ namespace SSSEditor {
 					MiscData80 = md80,
 					Dock = DockStyle.Fill,
 				};
-				if (songCodes.ContainsKey(pair.stage)) {
-					Song s = songCodes[pair.stage];
+				if (sss.SongsByStage.ContainsKey(pair.stage)) {
+					Song s = sss.SongsByStage[pair.stage];
 					spc.Song = s.Filename;
 					spc.SongToolTip = s.ID.ToString("X4") + " - " + s.DefaultName;
 				}
@@ -171,7 +168,7 @@ namespace SSSEditor {
 			}
 		}
 
-		private void ReloadIfValidPac(string file, CustomSSS sssIfOtherFileValid = null) {
+		private void ReloadIfValidPac(string file, CustomSSSwithSDSL sssIfOtherFileValid = null) {
 			ResourceNode node = NodeFactory.FromFile(null, file);
 			ResourceNode p1icon = node.FindChild("MenSelmapCursorPly.1", true);
 			BRESNode candidate = (p1icon != null) ? p1icon.Parent.Parent as BRESNode : null;
@@ -300,7 +297,7 @@ namespace SSSEditor {
 				dialog.Filter = "Ocarina codes (*.gct, *.txt)|*.gct;*.txt";
 				dialog.Multiselect = false;
 				if (dialog.ShowDialog() == DialogResult.OK) {
-					sss = new CustomSSS(dialog.FileName);
+					sss = new CustomSSSwithSDSL(dialog.FileName);
 					ReloadData();
 				}
 			}
@@ -319,14 +316,14 @@ namespace SSSEditor {
 		private void openSDCardRootToolStripMenuItem_Click(object sender, EventArgs e) {
 			using (var dialog = new FolderBrowserDialog()) {
 				if (dialog.ShowDialog() == DialogResult.OK) {
-					CustomSSS candidateSSS;
+					CustomSSSwithSDSL candidateSSS;
 
 					if (File.Exists(dialog.SelectedPath + "/codes/RSBE01.gct")) {
-						candidateSSS = new CustomSSS(dialog.SelectedPath + "/codes/RSBE01.gct");
+						candidateSSS = new CustomSSSwithSDSL(dialog.SelectedPath + "/codes/RSBE01.gct");
 					} else if (File.Exists(dialog.SelectedPath + "/data/gecko/codes/RSBE01.gct")) {
-						candidateSSS = new CustomSSS(dialog.SelectedPath + "/data/gecko/codes/RSBE01.gct");
+						candidateSSS = new CustomSSSwithSDSL(dialog.SelectedPath + "/data/gecko/codes/RSBE01.gct");
 					} else if (File.Exists(dialog.SelectedPath + "/RSBE01.gct")) {
-						candidateSSS = new CustomSSS(dialog.SelectedPath + "/RSBE01.gct");
+						candidateSSS = new CustomSSSwithSDSL(dialog.SelectedPath + "/RSBE01.gct");
 					} else {
 						MessageBox.Show(this, "Could not find codes/RSBE01.gct or data/gecko/codes/RSBE01.gct.",
 							"Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
