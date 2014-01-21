@@ -103,8 +103,8 @@ namespace SSSEditor {
 
 				TextureContainer tc = new TextureContainer(miscdata80,
 					IconOrder != null && i <= IconOrder.Length ? IconOrder[i-1] : 100);
-				if (tc.icon_tex0 == null) continue;
-				Image image = tc.icon_tex0.GetImage(0);
+				if (tc.icon.tex0 == null) continue;
+				Image image = tc.icon.tex0.GetImage(0);
 
 				icons[i] = new Tuple<Image, RectangleF>(image, r);
 			}
