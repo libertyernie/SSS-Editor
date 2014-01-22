@@ -1,5 +1,5 @@
-﻿SSS Editor 3.1 - December 31, 2013
-Copyright © 2013 libertyernie
+﻿SSS Editor 3.2 - January 22, 2013
+Copyright © 2014 libertyernie
 http://lakora.us/brawl/ssseditor
 
 SSS Editor is a .NET application for managing the Custom SSS code, on its own
@@ -106,3 +106,11 @@ The 41st value is reserved for the Menu icon on My Music, so its value doesn't m
 The page 1 and page 2 sections take the format:
 [index][index][index][index] [index][index][index][index] ...
 where [index] is a reference to the stage/icon list below. For example, putting "0C" here would refer to the 13th stage defined in the list (you count from 0, and 0C = 12 in decimal.)
+
+-------- Changes --------
+
+Changes in 3.2:
+	* Tooltip on song filename now shows 4-digit ID and default song name
+	* ./minusery/pf/system/common5.pac added to default search paths
+	* Other changes to work with updates in BrawlManagerLib.dll
+
