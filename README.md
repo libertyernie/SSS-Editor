@@ -1,4 +1,4 @@
 SSS-Editor
 ==========
 
-Define, reorder, and preview stage icons on the SSBB stage select screen
+This project has been moved to a new Git repository: https://github.com/libertyernie/BrawlManagerLib
